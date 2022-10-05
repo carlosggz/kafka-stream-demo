@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: processor
+  kafka:
+    client-id: ${spring.application.name}
+    bootstrap-servers: ${app.boostrap-servers}
+    producer:
+      retries: 0
+      acks: all
+    streams:
+      bootstrap-servers: ${app.boostrap-servers}
+      application-id: ${spring.application.name}

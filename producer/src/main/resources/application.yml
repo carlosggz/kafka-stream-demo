@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: producer
+  cloud:
+    stream:
+      function:
+        definition: generateNumber
+      default-binder: kafka
+      bindings:
+        generateNumber-out-0:
+          destination: ${app.decimal-topic}
+          producer:
+            poller:
+              fixed-delay: ${app.poller-delay}
+
+  kafka:
+    client-id: ${spring.application.name}
+    bootstrap-servers: ${app.boostrap-servers}
+    bindings:
+      generateNumber-out-0:
+        producer:
+          configuration:
+            value.serializer: org.apache.kafka.common.serialization.Serdes.Integer
+    producer:
+      retries: 0
+      acks: all

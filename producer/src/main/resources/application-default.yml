@@ -1,0 +1,4 @@
+app:
+  decimal-topic: decimals-numbers
+  boostrap-servers: localhost:29092
+  poller-delay: 2s

@@ -1,0 +1,4 @@
+app:
+  decimal-topic: decimals-numbers
+  roman-topic: roman-numbers
+  boostrap-servers: localhost:29092

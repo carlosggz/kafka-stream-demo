@@ -1,0 +1,25 @@
+
+spring:
+  application:
+    name: consumer
+  cloud:
+    stream:
+      function:
+        definition: obtainNumberInfo
+      default-binder: kafka
+      bindings:
+        obtainNumberInfo-in-0:
+          destination: ${app.roman-topic}
+
+  kafka:
+    client-id: ${spring.application.name}
+    bootstrap-servers: ${app.boostrap-servers}
+    bindings:
+      obtainNumberInfo-in-0:
+        consumer:
+          configuration:
+            value.serializer: com.example.consumer.components.NumberInfoSerializer
+
+    streams:
+      bootstrap-servers: ${app.boostrap-servers}
+      application-id: ${spring.application.name}
